@@ -45,6 +45,8 @@ def operation(
     if x and y:
         factors.append(int(x))
         factors.append(int(y))
+    else:
+        return 0
 
     return solve(method, factors)
 
