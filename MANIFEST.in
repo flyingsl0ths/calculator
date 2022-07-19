@@ -1,4 +1,6 @@
-include *.nix
+include shell.nix
 include .editorconfig
 include .envrc
+include pytest.ini
 recursive-include tests *.py
+recursive-include src *.py
