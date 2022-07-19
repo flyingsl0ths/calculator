@@ -39,8 +39,8 @@ def operation(
 ) -> Union[float, int]:
     factors: list[int] = []
 
-    x: int = request.json.get("x")  # type: ignore
-    y: int = request.json.get("y")  # type: ignore
+    x = request.json.get("x")  # type: ignore
+    y = request.json.get("y")  # type: ignore
 
     if x and y:
         factors.append(int(x))
