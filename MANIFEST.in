@@ -1,3 +1,4 @@
 include *.nix
+include .editorconfig
 include .envrc
 recursive-include tests *.py
