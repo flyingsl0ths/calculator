@@ -1,0 +1,3 @@
+include *.nix
+include .envrc
+recursive-include tests *.py
