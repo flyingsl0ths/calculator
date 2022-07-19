@@ -1,23 +1,39 @@
-import pytest
+from pytest import raises
 from api import calculator
 
 
-class TestCalculator:
-    x: int = 10
-    y: int = 20
+def test_add():
+    assert calculator.add(1, 2) == 3.0
+    assert calculator.add(1.0, 2.0) == 3.0
+    assert calculator.add(0, 2.0) == 2.0
+    assert calculator.add(2.0, 0) == 2.0
+    assert calculator.add(-4, 2.0) == -2.0
 
-    def test_add(self) -> None:
-        assert calculator.add(self.x, self.y) == 30
 
-    def test_subtraction(self) -> None:
-        assert calculator.subtract(self.y, self.x) == 10
+def test_subtract():
+    assert calculator.subtract(1, 2) == -1.0
+    assert calculator.subtract(2, 1) == 1.0
+    assert calculator.subtract(1.0, 2.0) == -1.0
+    assert calculator.subtract(0, 2.0) == -2.0
+    assert calculator.subtract(2.0, 0.0) == 2.0
+    assert calculator.subtract(-4, 2.0) == -6.0
 
-    def test_multiplication(self) -> None:
-        assert calculator.multiply(self.y, self.x) == 200
 
-    def test_division(self) -> None:
-        assert calculator.divide(self.y, self.x) == 2.0
+def test_multiply():
+    assert calculator.multiply(1, 2) == 2.0
+    assert calculator.multiply(1.0, 2.0) == 2.0
+    assert calculator.multiply(0, 2.0) == 0.0
+    assert calculator.multiply(2.0, 0.0) == 0.0
+    assert calculator.multiply(-4, 2.0) == -8.0
 
-    def test_division_by_zero(self) -> None:
-        with pytest.raises(ZeroDivisionError):
-            calculator.divide(self.x, 0)
+
+def test_divide():
+    assert calculator.divide(1, 2) == 0.5
+    assert calculator.divide(1.0, 2.0) == 0.5
+    assert calculator.divide(0, 2.0) == 0
+    assert calculator.divide(-4, 2.0) == -2.0
+
+
+def test_division_by_zero() -> None:
+    with raises(ZeroDivisionError):
+        calculator.divide(10, 0)

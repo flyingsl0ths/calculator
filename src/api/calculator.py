@@ -1,64 +1,65 @@
 from enum import Enum, unique
+from typing import Union
 
 
 @unique
 class Operations(Enum):
     """Available calculator operations"""
 
-    ADD: int = 0
-    SUB: int = 1
-    MUL: int = 2
-    DIV: int = 3
+    ADD = 0
+    SUB = 1
+    MUL = 2
+    DIV = 3
 
 
-def add(x: int, y: int) -> int:
+def add(x: Union[float, int], y: Union[float, int]) -> Union[float, int]:
     """Adds two numbers
 
     Args:
-        x (int): Left operand
-        y (int): Right operand
+        x (float|int): Left operand
+        y (float|int): Right operand
 
     Returns:
-        int: The sum of the two operands
+        float|int: The sum of the two operands
     """
     return x + y
 
 
-def subtract(x: int, y: int) -> int:
+def subtract(x: Union[float, int], y: Union[float, int]) -> Union[float, int]:
     """Subtracts two numbers
 
     Args:
-        x (int): Left operand
-        y (int): Right operand
+        x (float|int): Left operand
+        y (float|int): Right operand
 
     Returns:
-        int: The difference of the two operands
+        float|int: The difference of the two operands
     """
     return x - y
 
 
-def multiply(x: int, y: int) -> int:
+def multiply(x: Union[float, int], y: Union[float, int]) -> Union[float, int]:
     """Multiplies two numbers
 
     Args:
-        x (int): Left operand
-        y (int): Right operand
+        x (float|int): Left operand
+        y (float|int): Right operand
 
     Returns:
-        int: The product of the two operands
+        float|int: The product of the two operands
     """
     return x * y
 
 
-def divide(x: int, y: int) -> float:
+def divide(x: Union[float, int], y: Union[float, int]) -> Union[float, int]:
     """Divides two numbers
 
     Args:
-        x (int): Left operand
-        y (int): Right operand
+        x (float|int): Left operand
+        y (float|int): Right operand
 
     Returns:
-        int: The division of the two operands
+        float|int: The division of the two operands
     """
     if y == 0:
         raise ZeroDivisionError("Cannot divide by zero")

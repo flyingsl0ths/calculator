@@ -6,7 +6,10 @@ from os import environ
 app = Flask(__name__.split(".")[0])
 
 
-OPS: dict[calculator.Operations, Callable[[int, int], Union[float, int]]] = {
+OPS: dict[
+    calculator.Operations,
+    Callable[[Union[float, int], Union[float, int]], Union[float, int]],
+] = {
     calculator.Operations.ADD: calculator.add,
     calculator.Operations.SUB: calculator.subtract,
     calculator.Operations.MUL: calculator.multiply,
@@ -37,30 +40,29 @@ def divide() -> str:
 def operation(
     method: calculator.Operations,
 ) -> Union[float, int]:
-    factors: list[int] = []
+    factors: tuple[Union[float, int], Union[float, int]]
 
     x = request.json.get("x")  # type: ignore
     y = request.json.get("y")  # type: ignore
 
     if x and y:
-        factors.append(int(x))
-        factors.append(int(y))
+        factors = (float(x), float(y))
     else:
-        return 0
+        return 0.0
 
     return solve(method, factors)
 
 
 def solve(
     method: calculator.Operations,
-    factors: list[int],
+    factors: tuple[Union[float, int], Union[float, int]],
 ) -> Union[float, int]:
     return OPS[method](factors[0], factors[1])
 
 
 def get_port() -> int:
     port_number = environ.get("PORT")
-    return int(port_number) if port_number else 8080
+    return int(port_number) if port_number else 5000
 
 
 app.run(host="0.0.0.0", port=get_port())
