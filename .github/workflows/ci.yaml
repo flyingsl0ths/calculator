@@ -4,7 +4,13 @@ on: [push, pull_request]
 
 jobs:
     Build:
-        runs-on: ubuntu-latest
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+        env:
+            OS: ${{ matrix.os }}
+            PYTHON: "3.10"
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-python@v4
