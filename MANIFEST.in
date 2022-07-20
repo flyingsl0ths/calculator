@@ -2,5 +2,6 @@ include shell.nix
 include .editorconfig
 include .envrc
 include pytest.ini
+include codecov.yaml
 recursive-include tests *.py
 recursive-include src *.py
