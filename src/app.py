@@ -1,9 +1,17 @@
 from api import calculator
 from typing import Callable, Union
 from flask import Flask, request
+from flask_cors import CORS
 from os import environ
 
+
+def get_allowed_origin() -> str:
+    domain = environ.get("DOMAIN")
+    return domain if domain else "*"
+
+
 app = Flask(__name__.split(".")[0])
+cors = CORS(app, resources={r"/api/*": {"origins": get_allowed_origin()}})
 
 
 OPS: dict[
