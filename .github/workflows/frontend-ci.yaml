@@ -26,6 +26,5 @@ jobs:
               uses: codecov/codecov-action@v3.1.0
               with:
                   env_vars: OS, NODE_VER
-                  flags: unittests
-                  name: codecov-umbrella
+                  flags: frontend
                   verbose: true
