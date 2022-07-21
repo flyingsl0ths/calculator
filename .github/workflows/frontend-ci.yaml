@@ -4,12 +4,9 @@ on: [push, pull_request]
 
 jobs:
     Frontend:
-        runs-on: ${{ matrix.os }}
-        strategy:
-            matrix:
-                os: [ubuntu-latest, macos-latest]
+        runs-on: ubuntu-latest
         env:
-            OS: ${{ matrix.os }}
+            OS: "ubuntu-latest"
             NODE_VER: "16.x"
 
         defaults:
@@ -30,7 +27,6 @@ jobs:
               with:
                   env_vars: OS, NODE_VER
                   fail_ci_if_error: true
-                  files: ./coverage/lcov.info
                   flags: unittests
                   name: codecov-umbrella
                   verbose: true
