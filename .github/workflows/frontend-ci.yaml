@@ -27,6 +27,7 @@ jobs:
               with:
                   env_vars: OS, NODE_VER
                   fail_ci_if_error: true
+                  files: ./coverage/lcov.info
                   flags: unittests
                   name: codecov-umbrella
                   verbose: true
