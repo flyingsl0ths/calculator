@@ -3,7 +3,7 @@ name: Backend CI
 on: [push, pull_request]
 
 jobs:
-    Build:
+    Backend:
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:

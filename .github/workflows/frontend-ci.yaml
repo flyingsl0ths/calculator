@@ -3,7 +3,7 @@ name: Frontend CI
 on: [push, pull_request]
 
 jobs:
-  Build:
+  Frontend:
     runs-on: ${{ matrix.os }}
       strategy:
         matrix:
