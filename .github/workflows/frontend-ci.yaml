@@ -10,6 +10,7 @@ jobs:
             os: [ubuntu-latest, macos-latest]
         env:
             OS: ${{ matrix.os }}
+            NODE_VER: "16.x"
 
     name: Test JS frontend
     defaults:
@@ -21,7 +22,7 @@ jobs:
     - name: Setup Node.js 16.x
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: "16.x"
     - name: Install requirements
       run: npm install
     - name: Run tests and collect coverage
@@ -29,7 +30,7 @@ jobs:
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3.1.0
       with:
-        env_vars: OS
+        env_vars: OS, NODE_VER
         fail_ci_if_error: true
         files: ./coverage/lcov.info
         flags: unittests
