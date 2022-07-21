@@ -12,25 +12,25 @@ jobs:
             OS: ${{ matrix.os }}
             NODE_VER: "16.x"
 
-    defaults:
-        run:
-            working-directory: ./client
-    steps:
-        - uses: actions/checkout@v3
-        - name: Setup Node.js 16.x
-          uses: actions/setup-node@v3
-          with:
-              node-version: "16.x"
-        - name: Install requirements
-          run: npm install
-        - name: Run tests and collect coverage
-          run: npm run collect-coverage
-        - name: Upload coverage reports to Codecov
-          uses: codecov/codecov-action@v3.1.0
-          with:
-              env_vars: OS, NODE_VER
-              fail_ci_if_error: true
-              files: ./coverage/lcov.info
-              flags: unittests
-              name: codecov-umbrella
-              verbose: true
+        defaults:
+            run:
+                working-directory: ./client
+        steps:
+            - uses: actions/checkout@v3
+            - name: Setup Node.js 16.x
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "16.x"
+            - name: Install requirements
+              run: npm install
+            - name: Run tests and collect coverage
+              run: npm run collect-coverage
+            - name: Upload coverage reports to Codecov
+              uses: codecov/codecov-action@v3.1.0
+              with:
+                  env_vars: OS, NODE_VER
+                  fail_ci_if_error: true
+                  files: ./coverage/lcov.info
+                  flags: unittests
+                  name: codecov-umbrella
+                  verbose: true
