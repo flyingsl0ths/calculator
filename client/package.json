@@ -1,0 +1,30 @@
+{
+    "name": "calculator",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "A simple calculator web app",
+    "scripts": {
+        "lint": "eslint \"static/js/*.js\" --quiet --fix",
+        "test": "npx mocha",
+        "collect-coverage": "npx nyc --reporter=lcov mocha"
+    },
+    "author": "flyingsl0ths",
+    "license": "GPL-3.0-or-later",
+    "devDependencies": {
+        "eslint": "^8.20.0",
+        "mocha": "^10.0.0",
+        "nyc": "^15.1.0"
+    },
+    "dependencies": {
+        "eslint-config-prettier": "^8.5.0"
+    },
+    "mocha": {
+        "spec": "static/js/test/**/*.{cjs,mjs,js}",
+        "node-option": [
+            "input-type=module"
+        ],
+        "reporter": "spec",
+        "check-leaks": true,
+        "exit": true
+    }
+}
