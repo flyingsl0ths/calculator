@@ -26,5 +26,14 @@
         "reporter": "spec",
         "check-leaks": true,
         "exit": true
+    },
+    "nyc": {
+        "all": true,
+        "include": [
+            "static/js/CalculatorView.js",
+            "static/js/CalculatorController.js",
+            "static/js/test/calculator.test.js"
+        ],
+        "exclude": []
     }
 }
